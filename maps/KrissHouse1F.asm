@@ -64,22 +64,6 @@ UnknownScript_0x7a52a:
 	iffalse UnknownScript_0x7a519
 UnknownScript_0x7a531:
 	writetext UnknownText_0x7a763
-	yesorno
-	iffalse UnknownScript_0x7a542
-	jump UnknownScript_0x7a53b
-
-UnknownScript_0x7a53b:
-	writetext UnknownText_0x7a7cb
-	buttonsound
-	jump UnknownScript_0x7a549
-
-UnknownScript_0x7a542:
-	writetext UnknownText_0x7a807
-	buttonsound
-	jump UnknownScript_0x7a549
-
-UnknownScript_0x7a549:
-	writetext UnknownText_0x7a850
 	waitbutton
 	closetext
 	checkevent EVENT_GAVE_KURT_APRICORNS
@@ -219,10 +203,6 @@ UnknownText_0x7a604:
 	para "ELM, was looking"
 	line "for you."
 
-	para "He said he wanted"
-	line "you to do some-"
-	cont "thing for him."
-
 	para "Oh! I almost for-"
 	line "got! Your #MON"
 
@@ -233,12 +213,18 @@ UnknownText_0x7a604:
 	done
 
 UnknownText_0x7a6bd:
-	text "#MON GEAR, or"
-	line "just #GEAR."
+	text "The #GEAR It's"
+	line "essential for any"
+	cont "trainer."
 
-	para "It's essential if"
-	line "you want to be a"
-	cont "good trainer."
+	para "Phone numbers are"
+	line "stored in memory."
+
+	para "Just choose a name"
+	line "you want to call."
+	
+	para "Gee, isn't that"
+	line "convenient?"
 
 	para "Oh, the day of the"
 	line "week isn't set."
@@ -254,42 +240,12 @@ UnknownText_0x7a742:
 
 UnknownText_0x7a763:
 	text "Come home to"
-	line "adjust your clock"
+	line "adjust your clock."
 
-	para "for Daylight"
-	line "Saving Time."
+	para "PROF.ELM is wait-"
+	line "ing for you."
 
-	para "By the way, do you"
-	line "know how to use"
-	cont "the PHONE?"
-	done
-
-UnknownText_0x7a7cb:
-	text "Don't you just"
-	line "turn the #GEAR"
-
-	para "on and select the"
-	line "PHONE icon?"
-	done
-
-UnknownText_0x7a807:
-	text "I'll read the"
-	line "instructions."
-
-	para "Turn the #GEAR"
-	line "on and select the"
-	cont "PHONE icon."
-	done
-
-UnknownText_0x7a850:
-	text "Phone numbers are"
-	line "stored in memory."
-
-	para "Just choose a name"
-	line "you want to call."
-
-	para "Gee, isn't that"
-	line "convenient?"
+	para "Hurry up, baby!"
 	done
 
 UnknownText_0x7a8b5:
