@@ -337,6 +337,7 @@ ElmAfterTheftScript:
 	scall ElmJumpBackScript2
 	writetext ElmAfterTheftText4
 	buttonsound
+	verbosegiveitem LUCKY_EGG
 	writetext ElmAfterTheftText5
 	buttonsound
 	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -415,6 +416,10 @@ ElmGiveTicketScript:
 	verbosegiveitem S_S_TICKET
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	writetext ElmGiveTicketText2
+	buttonsound
+	verbosegiveitem GS_BALL
+	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
+	writetext ElmGiveTicketText3
 	waitbutton
 	closetext
 	end
@@ -475,9 +480,12 @@ AideScript_GivePotions:
 	opentext
 	writetext AideText_GiveYouPotions
 	buttonsound
-	verbosegiveitem POTION
+	itemtotext POTION, MEM_BUFFER_1
+	scall AideScript_ReceiveTheBalls
+	giveitem POTION, 5
 	writetext AideText_AlwaysBusy
-	waitbutton
+	buttonsound
+	itemnotify
 	closetext
 	setscene 2
 	end
@@ -502,7 +510,7 @@ AideScript_GiveYouBalls:
 	buttonsound
 	itemtotext POKE_BALL, MEM_BUFFER_1
 	scall AideScript_ReceiveTheBalls
-	giveitem POKE_BALL, 5
+	giveitem POKE_BALL, 10
 	writetext AideText_ExplainBalls
 	buttonsound
 	itemnotify
@@ -742,20 +750,12 @@ ElmText_Intro:
 	line "it, <PLAY_G>."
 
 	para "You see…"
-
+	
 	para "I'm writing a"
 	line "paper that I want"
 
 	para "to present at a"
 	line "conference."
-
-	para "But there are some"
-	line "things I don't"
-
-	para "quite understand"
-	line "yet."
-
-	para "So!"
 
 	para "I'd like you to"
 	line "raise a #MON"
@@ -819,16 +819,6 @@ ElmText_MissionFromMrPokemon:
 	para "saying that this"
 	line "time it's real."
 
-	para "It is intriguing,"
-	line "but we're busy"
-
-	para "with our #MON"
-	line "research…"
-
-	para "Wait!"
-
-	para "I know!"
-
 	para "<PLAY_G>, can you"
 	line "go in our place?"
 	done
@@ -839,11 +829,7 @@ ElmText_ChooseAPokemon:
 
 	para "#MON contained"
 	line "in these BALLS."
-
-	para "You'll be that"
-	line "#MON's first"
-	cont "partner, <PLAY_G>!"
-
+	
 	para "Go on. Pick one!"
 	done
 
@@ -903,12 +889,6 @@ ElmDirectionsText1:
 
 	para "CHERRYGROVE, the"
 	line "next city over."
-
-	para "It's almost a"
-	line "direct route"
-
-	para "there, so you"
-	line "can't miss it."
 
 	para "But just in case,"
 	line "here's my phone"
@@ -986,9 +966,6 @@ ElmAfterTheftText3:
 ElmAfterTheftText4:
 	text "But… Is it a"
 	line "#MON EGG?"
-
-	para "If it is, it is a"
-	line "great discovery!"
 	done
 
 ElmAfterTheftText5:
@@ -1005,6 +982,11 @@ ElmAfterTheftText5:
 	line "seeing the poten-"
 	cont "tial of people as"
 	cont "trainers."
+	
+	para "What?!?"
+
+	para "PROF.OAK gave you"
+	line "a #MON too?"
 
 	para "Wow, <PLAY_G>. You"
 	line "may have what it"
@@ -1023,6 +1005,10 @@ ElmAfterTheftText5:
 	para "The closest GYM"
 	line "would be the one"
 	cont "in VIOLET CITY."
+	
+	para "Here, I want you"
+	line "to have this as a"
+	cont "good luck charm."
 	done
 
 ElmAfterTheftText6:
@@ -1088,10 +1074,7 @@ ShowElmTogepiText3:
 	text "The EGG hatched!"
 	line "So, #MON are"
 	cont "born from EGGS…"
-
-	para "No, perhaps not"
-	line "all #MON are."
-
+	
 	para "Wow, there's still"
 	line "a lot of research"
 	cont "to be done."
@@ -1207,6 +1190,24 @@ ElmGiveTicketText2:
 	line "traveled all over"
 	cont "with your #MON."
 
+	para "Here, I would also"
+	line "like you to have"
+	cont "this old relic."
+	done
+
+ElmGiveTicketText3:
+	text "Neither PROF.IVY,"
+	line "PROF.OAK or RED"
+	
+	para "could find that"
+	line "item true purpose."
+	
+	para "I think you may"
+	line "have what it takes"
+	
+	para "to solve the GS"
+	line "BALL mystery."
+		
 	para "Give my regards to"
 	line "PROF.OAK in KANTO!"
 	done
