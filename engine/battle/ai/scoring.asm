@@ -202,6 +202,7 @@ AI_Types: ; 38635
 	push de
 	push bc
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	and MOVE_TYPE_MASK
 	ld d, a
 	ld hl, wEnemyMonMoves
 	ld b, wEnemyMonMovesEnd - wEnemyMonMoves + 1
@@ -216,6 +217,7 @@ AI_Types: ; 38635
 
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	and MOVE_TYPE_MASK
 	cp d
 	jr z, .checkmove2
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
@@ -1177,13 +1179,6 @@ AI_Smart_SpDefenseUp2: ; 38aed
 	cp $9
 	ret nc
 
-	ld a, [wBattleMonType1]
-	cp SPECIAL
-	jr nc, .asm_38b09
-	ld a, [wBattleMonType2]
-	cp SPECIAL
-	ret c
-
 .asm_38b09
 	call AI_80_20
 	ret c
@@ -1487,6 +1482,7 @@ AI_Smart_Encore: ; 38c3b
 
 	push hl
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	and MOVE_TYPE_MASK
 	ld hl, wEnemyMonType1
 	predef CheckTypeMatchup
 
