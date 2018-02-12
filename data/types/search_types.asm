@@ -17,4 +17,5 @@ PokedexTypeSearchConversionTable: ; 410f6
 	db DRAGON
 	db DARK
 	db STEEL
+	db FAE
 ; 41107

@@ -51,6 +51,9 @@ NUM_LEVEL_STATS EQU const_value
 	const MOVE_CHANCE ; 6
 MOVE_LENGTH EQU const_value
 
+; move struct mask
+MOVE_TYPE_MASK EQU %00111111
+
 ; stat constants
 ; indexes for:
 ; - wPlayerStats and wEnemyStats (see wram.asm)
