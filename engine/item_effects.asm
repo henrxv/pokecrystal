@@ -39,7 +39,6 @@ ItemEffects: ; e73c
 	dw FireStone
 	dw Thunderstone
 	dw WaterStone
-	dw Item19
 	dw HPUp
 	dw Protein
 	dw Iron
@@ -59,12 +58,10 @@ ItemEffects: ; e73c
 	dw SuperRepel
 	dw MaxRepel
 	dw DireHit
-	dw Item2D
 	dw FreshWater
 	dw SodaPop
 	dw Lemonade
 	dw XAttack
-	dw Item32
 	dw XDefend
 	dw XSpeed
 	dw XSpecial
@@ -104,7 +101,6 @@ ItemEffects: ; e73c
 	dw BigMushroom
 	dw Silverpowder
 	dw BluApricorn
-	dw Item5A
 	dw AmuletCoin
 	dw YlwApricorn
 	dw GrnApricorn
@@ -114,7 +110,6 @@ ItemEffects: ; e73c
 	dw WhtApricorn
 	dw Blackbelt
 	dw BlkApricorn
-	dw Item64
 	dw PnkApricorn
 	dw Blackglasses
 	dw Slowpoketail
@@ -134,7 +129,6 @@ ItemEffects: ; e73c
 	dw MiracleSeed
 	dw ThickClub
 	dw FocusBand
-	dw Item78
 	dw Energypowder
 	dw EnergyRoot
 	dw HealPowder
@@ -149,34 +143,21 @@ ItemEffects: ; e73c
 	dw StarPiece
 	dw BasementKey
 	dw Pass
-	dw Item87
-	dw Item88
-	dw Item89
 	dw Charcoal
 	dw BerryJuice
 	dw ScopeLens
-	dw Item8D
-	dw Item8E
 	dw MetalCoat
 	dw DragonFang
-	dw Item91
 	dw Leftovers
-	dw Item93
-	dw Item94
-	dw Item95
 	dw Mysteryberry
 	dw DragonScale
 	dw BerserkGene
-	dw Item99
-	dw Item9A
-	dw Item9B
 	dw SacredAsh
 	dw HeavyBall
 	dw FlowerMail
 	dw LevelBall
 	dw LureBall
 	dw FastBall
-	dw ItemA2
 	dw LightBall
 	dw FriendBall
 	dw MoonBall
@@ -185,15 +166,22 @@ ItemEffects: ; e73c
 	dw GorgeousBox
 	dw SunStone
 	dw PolkadotBow
-	dw ItemAB
 	dw UpGrade
 	dw Berry
 	dw GoldBerry
 	dw Squirtbottle
-	dw ItemB0
 	dw ParkBall
 	dw RainbowWing
-	dw ItemB3
+	dw BrickPiece
+	dw SurfMail
+	dw LittleBlueMail
+	dw PortraitMail
+	dw LovelyMail
+	dw EonMail
+	dw MorphMail
+	dw BlueskyMail
+	dw MusicMail
+	dw MirageMail
 ; e8a2
 
 
@@ -2787,12 +2775,9 @@ OpenBox: ; f769
 ; 0xf77d
 
 Brightpowder:
-Item19:
 LuckyPunch:
 MetalPowder:
 Nugget:
-Item2D:
-Item32:
 ExpShare:
 SilverLeaf:
 RedScale:
@@ -2812,7 +2797,6 @@ Tinymushroom:
 BigMushroom:
 Silverpowder:
 BluApricorn:
-Item5A:
 AmuletCoin:
 YlwApricorn:
 GrnApricorn:
@@ -2822,7 +2806,6 @@ Twistedspoon:
 WhtApricorn:
 Blackbelt:
 BlkApricorn:
-Item64:
 PnkApricorn:
 Blackglasses:
 Slowpoketail:
@@ -2839,7 +2822,6 @@ GsBall:
 MiracleSeed:
 ThickClub:
 FocusBand:
-Item78:
 HardStone:
 LuckyEgg:
 MachinePart:
@@ -2848,34 +2830,28 @@ LostItem:
 Stardust:
 StarPiece:
 Pass:
-Item87:
-Item88:
-Item89:
 Charcoal:
 ScopeLens:
-Item8D:
-Item8E:
 MetalCoat:
 DragonFang:
-Item91:
 Leftovers:
-Item93:
-Item94:
-Item95:
 DragonScale:
 BerserkGene:
-Item99:
-Item9A:
-Item9B:
 FlowerMail:
-ItemA2:
 LightBall:
 PolkadotBow:
-ItemAB:
 UpGrade:
-ItemB0:
 RainbowWing:
-ItemB3:
+BrickPiece:
+SurfMail:
+LittleBlueMail:
+PortraitMail:
+LovelyMail:
+EonMail:
+MorphMail:
+BlueskyMail:
+MusicMail:
+MirageMail:
 TeruSama: ; f77d
 	jp IsntTheTimeMessage
 ; f780

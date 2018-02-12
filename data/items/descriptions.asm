@@ -4,7 +4,7 @@ ItemDescriptions:
 	dw BrightpowderDesc
 	dw GreatBallDesc
 	dw PokeBallDesc
-	dw TeruSama1Desc
+	dw TownMapDesc
 	dw BicycleDesc
 	dw MoonStoneDesc
 	dw AntidoteDesc
@@ -23,7 +23,6 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSama2Desc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -43,18 +42,16 @@ ItemDescriptions:
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw DireHitDesc
-	dw TeruSama3Desc
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
 	dw CoinCaseDesc
 	dw ItemfinderDesc
-	dw TeruSama5Desc
+	dw PokeFluteDesc
 	dw ExpShareDesc
 	dw OldRodDesc
 	dw GoodRodDesc
@@ -88,7 +85,6 @@ ItemDescriptions:
 	dw BigMushroomDesc
 	dw SilverPowderDesc
 	dw BluApricornDesc
-	dw TeruSama6Desc
 	dw AmuletCoinDesc
 	dw YlwApricornDesc
 	dw GrnApricornDesc
@@ -98,7 +94,6 @@ ItemDescriptions:
 	dw WhtApricornDesc
 	dw BlackbeltDesc
 	dw BlkApricornDesc
-	dw TeruSama7Desc
 	dw PnkApricornDesc
 	dw BlackGlassesDesc
 	dw SlowpokeTailDesc
@@ -118,7 +113,6 @@ ItemDescriptions:
 	dw MiracleSeedDesc
 	dw ThickClubDesc
 	dw FocusBandDesc
-	dw TeruSama8Desc
 	dw EnergyPowderDesc
 	dw EnergyRootDesc
 	dw HealPowderDesc
@@ -133,34 +127,21 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BasementKeyDesc
 	dw PassDesc
-	dw TeruSama9Desc
-	dw TeruSama10Desc
-	dw TeruSama11Desc
 	dw CharcoalDesc
 	dw BerryJuiceDesc
 	dw ScopeLensDesc
-	dw TeruSama12Desc
-	dw TeruSama13Desc
 	dw MetalCoatDesc
 	dw DragonFangDesc
-	dw TeruSama14Desc
 	dw LeftoversDesc
-	dw TeruSama15Desc
-	dw TeruSama16Desc
-	dw TeruSama17Desc
 	dw MysteryBerryDesc
 	dw DragonScaleDesc
 	dw BerserkGeneDesc
-	dw TeruSama18Desc
-	dw TeruSama19Desc
-	dw TeruSama20Desc
 	dw SacredAshDesc
 	dw HeavyBallDesc
 	dw FlowerMailDesc
 	dw LevelBallDesc
 	dw LureBallDesc
 	dw FastBallDesc
-	dw TeruSama21Desc
 	dw LightBallDesc
 	dw FriendBallDesc
 	dw MoonBallDesc
@@ -169,15 +150,12 @@ ItemDescriptions:
 	dw GorgeousBoxDesc
 	dw SunStoneDesc
 	dw PolkadotBowDesc
-	dw TeruSama22Desc
 	dw UpGradeDesc
 	dw BerryDesc
 	dw GoldBerryDesc
 	dw SquirtBottleDesc
-	dw TeruSama23Desc
 	dw ParkBallDesc
 	dw RainbowWingDesc
-	dw TeruSama24Desc
 	dw BrickPieceDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -187,7 +165,7 @@ ItemDescriptions:
 	dw MorphMailDesc
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
-	dw MewMailDesc
+	dw MirageMailDesc
 	dw TeruSama25Desc
 	dw TeruSama26Desc
 	dw TeruSama26Desc
@@ -254,6 +232,28 @@ ItemDescriptions:
 	dw TeruSama31Desc
 	dw TeruSama32Desc
 	dw TeruSama33Desc
+	dw TeruSama2Desc
+	dw TeruSama3Desc
+	dw TeruSama4Desc
+	dw TeruSama6Desc
+	dw TeruSama7Desc
+	dw TeruSama8Desc
+	dw TeruSama9Desc
+	dw TeruSama10Desc
+	dw TeruSama11Desc
+	dw TeruSama12Desc
+	dw TeruSama13Desc
+	dw TeruSama14Desc
+	dw TeruSama15Desc
+	dw TeruSama16Desc
+	dw TeruSama17Desc
+	dw TeruSama18Desc
+	dw TeruSama19Desc
+	dw TeruSama20Desc
+	dw TeruSama21Desc
+	dw TeruSama22Desc
+	dw TeruSama23Desc
+	dw TeruSama24Desc
 
 MasterBallDesc:
 	db   "The best BALL. It"
@@ -275,7 +275,7 @@ PokeBallDesc:
 	db   "An item for catch-"
 	next "ing #MON.@"
 
-TeruSama1Desc:
+TownMapDesc:
 	db   "?@"
 
 BicycleDesc:
@@ -471,7 +471,7 @@ ItemfinderDesc:
 	db   "Checks for unseen"
 	next "items in the area.@"
 
-TeruSama5Desc:
+PokeFluteDesc:
 	db   "?@"
 
 ExpShareDesc:
@@ -977,7 +977,7 @@ MusicMailDesc:
 	db   "NATU-print MAIL."
 	next "(HOLD)@"
 
-MewMailDesc:
+MirageMailDesc:
 	db   "MEW-print MAIL."
 	next "(HOLD)@"
 
