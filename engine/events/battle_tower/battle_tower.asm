@@ -455,7 +455,7 @@ endr
 
 .not_move
 	dec hl
-	ld a, POUND
+	ld a, SILVER_WIND
 	ld [hli], a
 	xor a
 	ld [hli], a

@@ -171,7 +171,7 @@ Unreferenced_CorrectErrorsInPlayerParty:
 	cp NUM_ATTACKS + 1
 	jr c, .moves_loop
 .invalid_move
-	ld [hl], POUND
+	ld [hl], SILVER_WIND
 
 .moves_loop
 	ld a, [hl]

@@ -226,7 +226,7 @@ CheckBTMonMovesForErrors: ; 170c98
 	ld a, [hl]
 	cp NUM_ATTACKS + 1
 	jr c, .okay
-	ld a, POUND
+	ld a, SILVER_WIND
 	ld [hl], a
 
 .okay
