@@ -747,10 +747,8 @@ ElmText_Intro:
 	line "wondering if you"
 
 	para "could help me with"
-	line "it, <PLAY_G>."
+	line "it. You see…"
 
-	para "You see…"
-	
 	para "I'm writing a"
 	line "paper that I want"
 

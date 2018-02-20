@@ -50,12 +50,9 @@ UnknownScript_0x7a4f6:
 	buttonsound
 	special Special_SetDayOfWeek
 UnknownScript_0x7a519:
-	writetext UnknownText_0x7a742
-	yesorno
-	iffalse UnknownScript_0x7a52a
 	special Special_InitialSetDSTFlag
 	yesorno
-	iffalse UnknownScript_0x7a519
+	iffalse UnknownScript_0x7a52a
 	jump UnknownScript_0x7a531
 
 UnknownScript_0x7a52a:
@@ -233,19 +230,13 @@ UnknownText_0x7a6bd:
 	line "that!"
 	done
 
-UnknownText_0x7a742:
-	text "Is it Daylight"
-	line "Saving Time now?"
-	done
-
 UnknownText_0x7a763:
 	text "Come home to"
-	line "adjust your clock."
+	line "adjust your clock"
 
-	para "PROF.ELM is wait-"
-	line "ing for you."
+	para "for Daylight"
+	line "Saving Time."
 
-	para "Hurry up, baby!"
 	done
 
 UnknownText_0x7a8b5:
