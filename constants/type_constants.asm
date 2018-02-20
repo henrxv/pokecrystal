@@ -22,6 +22,7 @@
 	const DRAGON
 	const DARK
 	const FAE
+	const DRY
 TYPES_END EQU const_value
 
 NUM_TYPES EQU TYPES_END

@@ -119,6 +119,14 @@ TypeMatchups: ; 34bb1
 	db FAE,       DRAGON,    SUPER_EFFECTIVE
 	db FAE,       DARK,      SUPER_EFFECTIVE
 	db FAE,       STEEL,     NOT_VERY_EFFECTIVE
+	db DRY,       WATER,     SUPER_EFFECTIVE
+	db DRY,       GRASS,     SUPER_EFFECTIVE
+	db DRY,       ICE,       NOT_VERY_EFFECTIVE
+	db DRY,       GROUND,    SUPER_EFFECTIVE
+	db DRY,       FLYING,    SUPER_EFFECTIVE
+	db DRY,       DRAGON,    SUPER_EFFECTIVE
+	db DRY,       STEEL,     NOT_VERY_EFFECTIVE
+	db DRY,       FIRE,      NOT_VERY_EFFECTIVE
 
 	db -2 ; end
 

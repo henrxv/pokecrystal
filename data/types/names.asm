@@ -18,6 +18,7 @@ TypeNames: ; 5097b
 	dw Dragon
 	dw Dark
 	dw Fae
+	dw Dry
 
 Normal:    db "NORMAL@"
 Fighting:  db "FIGHTING@"
@@ -37,5 +38,6 @@ Steel:     db "STEEL@"
 Dragon:    db "DRAGON@"
 Dark:      db "DARK@"
 Fae:       db "FAIRY@"
+Dry:       db "ICE@"
 
 ; 50a28
