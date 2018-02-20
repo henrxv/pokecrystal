@@ -689,7 +689,7 @@ UnknownText_0x1c0d0e::
 
 UnknownText_0x1c0d12::
 	text_start
-	line "made a whirlwind!"
+	line "sprang up!"
 	prompt
 
 UnknownText_0x1c0d26::
