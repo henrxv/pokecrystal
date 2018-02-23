@@ -511,10 +511,9 @@ BattleText_UserWasReleasedFromStringBuffer1: ; 0x80df5
 	prompt
 ; 0x80e11
 
-UsedBindText: ; 0x80e11
-	text "<USER>"
-	line "used BIND on"
-	cont "<TARGET>!"
+AlreadyBurnedText: ; 0x80e11
+	text "<TARGET>'s"
+	line "already burned!"
 	prompt
 ; 0x80e24
 

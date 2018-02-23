@@ -226,8 +226,6 @@ UnknownText_0x7a6bd:
 	para "Oh, the day of the"
 	line "week isn't set."
 
-	para "You mustn't forget"
-	line "that!"
 	done
 
 UnknownText_0x7a763:
