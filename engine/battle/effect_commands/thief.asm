@@ -1,6 +1,10 @@
 BattleCommand_Thief: ; 37492
 ; thief
 
+	ld a, [wKickCounter]
+	and a
+	ret z
+
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy
@@ -10,47 +14,22 @@ BattleCommand_Thief: ; 37492
 	call .playeritem
 	ld a, [hl]
 	and a
-	ret nz
-
-; The enemy needs to have an item to steal.
+	jr nz, .knockoffenemyitem
 
 	call .enemyitem
 	ld a, [hl]
-	and a
-	ret z
-
-; Can't steal mail.
-
 	ld [wd265], a
-	ld d, a
-	farcall ItemIsMail
-	ret c
-
-	ld a, [wEffectFailed]
-	and a
-	ret nz
-
-	ld a, [wLinkMode]
-	and a
-	jr z, .stealenemyitem
-
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
-.stealenemyitem
-	call .enemyitem
 	xor a
 	ld [hl], a
 	ld [de], a
 
 	call .playeritem
-	ld a, [wd265]
-	ld [hl], a
-	ld [de], a
 	jr .stole
-
-
+	
+.knockoffenemyitem
+	call .enemyitem
+	jr .knockedoffitem
+	
 .enemy
 
 ; The enemy can't already have an item.
@@ -58,45 +37,40 @@ BattleCommand_Thief: ; 37492
 	call .enemyitem
 	ld a, [hl]
 	and a
-	ret nz
-
-; The player must have an item to steal.
-
-	call .playeritem
-	ld a, [hl]
-	and a
-	ret z
-
-; Can't steal mail!
-
-	ld [wd265], a
-	ld d, a
-	farcall ItemIsMail
-	ret c
-
-	ld a, [wEffectFailed]
-	and a
-	ret nz
+	jr nz, .knockoffplayeritem
 
 ; If the enemy steals your item,
 ; it's gone for good if you don't get it back.
 
 	call .playeritem
+	ld a, [hl]
+	ld [wd265], a
 	xor a
 	ld [hl], a
 	ld [de], a
 
 	call .enemyitem
+		
+.stole
 	ld a, [wd265]
 	ld [hl], a
 	ld [de], a
-
-
-.stole
 	call GetItemName
 	ld hl, StoleText
 	jp StdBattleTextBox
-
+	
+.knockoffplayeritem
+	call .playeritem
+	
+.knockedoffitem
+	ld a, [hl]
+	ld [wd265], a
+	xor a
+	ld [hl], a
+	ld [de], a
+	call GetItemName
+	ld hl, KnockedOffText
+	jp StdBattleTextBox
 
 .playeritem
 	ld a, 1

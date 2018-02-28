@@ -337,9 +337,9 @@ ElmAfterTheftScript:
 	scall ElmJumpBackScript2
 	writetext ElmAfterTheftText4
 	buttonsound
-	verbosegiveitem LUCKY_EGG
 	writetext ElmAfterTheftText5
 	buttonsound
+	verbosegiveitem LUCKY_EGG
 	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	setflag ENGINE_BUG_CONTEST_ON
 	setmapscene ROUTE_29, 1

@@ -1285,8 +1285,12 @@ BattleText_LinkErrorBattleCanceled: ; 0x81863
 	prompt
 ; 0x8188e
 
-BattleText_0x8188e: ; 0x8188e
-	text "There is no time"
-	line "left today!"
-	done
+KnockedOffText: ; 0x815da
+	text "<USER>"
+	line "knocked off"
+	cont "the @"
+	text_from_ram wStringBuffer1
+	text ""
+	cont "from its foe!"
+	prompt
 ; 0x818ac

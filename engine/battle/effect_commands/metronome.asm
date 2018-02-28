@@ -48,7 +48,6 @@ MetronomeExcepts: ; 37454
 	db METRONOME
 	db STRUGGLE
 	db SKETCH
-	db MIMIC
 	db COUNTER
 	db MIRROR_COAT
 	db PROTECT
