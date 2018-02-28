@@ -326,7 +326,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_LEECH_HIT,        AI_Smart_LeechHit
 	dbw EFFECT_SELFDESTRUCT,     AI_Smart_Selfdestruct
 	dbw EFFECT_DREAM_EATER,      AI_Smart_DreamEater
-	dbw EFFECT_MIRROR_MOVE,      AI_Smart_MirrorMove
+	dbw EFFECT_HEX,              AI_Smart_Hex
 	dbw EFFECT_EVASION_UP,       AI_Smart_EvasionUp
 	dbw EFFECT_ALWAYS_HIT,       AI_Smart_AlwaysHit
 	dbw EFFECT_ACCURACY_DOWN,    AI_Smart_AccuracyDown
@@ -337,7 +337,6 @@ AI_Smart: ; 386be
 	dbw EFFECT_TOXIC,            AI_Smart_Toxic
 	dbw EFFECT_LIGHT_SCREEN,     AI_Smart_LightScreen
 	dbw EFFECT_OHKO,             AI_Smart_Ohko
-	dbw EFFECT_RAZOR_WIND,       AI_Smart_RazorWind
 	dbw EFFECT_SUPER_FANG,       AI_Smart_SuperFang
 	dbw EFFECT_TRAP_TARGET,      AI_Smart_TrapTarget
 	dbw EFFECT_UNUSED_2B,        AI_Smart_Unused2B
@@ -346,17 +345,18 @@ AI_Smart: ; 386be
 	dbw EFFECT_REFLECT,          AI_Smart_Reflect
 	dbw EFFECT_PARALYZE,         AI_Smart_Paralyze
 	dbw EFFECT_SPEED_DOWN_HIT,   AI_Smart_SpeedDownHit
+	dbw EFFECT_SKY_ATTACK,       AI_Smart_SkyAttack
 	dbw EFFECT_SUBSTITUTE,       AI_Smart_Substitute
 	dbw EFFECT_HYPER_BEAM,       AI_Smart_HyperBeam
-	dbw EFFECT_RAGE,             AI_Smart_Rage
-	dbw EFFECT_MIMIC,            AI_Smart_Mimic
+	dbw EFFECT_CALM_MIND,        AI_Smart_CalmMind
+	dbw EFFECT_SP_ATK_UP_HIT,    AI_Smart_ChargeBeam
 	dbw EFFECT_LEECH_SEED,       AI_Smart_LeechSeed
 	dbw EFFECT_DISABLE,          AI_Smart_Disable
 	dbw EFFECT_COUNTER,          AI_Smart_Counter
 	dbw EFFECT_ENCORE,           AI_Smart_Encore
 	dbw EFFECT_PAIN_SPLIT,       AI_Smart_PainSplit
 	dbw EFFECT_SNORE,            AI_Smart_Snore
-	dbw EFFECT_CONVERSION2,      AI_Smart_Conversion2
+	dbw EFFECT_DRACO_METEOR,     AI_Smart_DracoMeteor
 	dbw EFFECT_LOCK_ON,          AI_Smart_LockOn
 	dbw EFFECT_DEFROST_OPPONENT, AI_Smart_DefrostOpponent
 	dbw EFFECT_SLEEP_TALK,       AI_Smart_SleepTalk
@@ -365,10 +365,8 @@ AI_Smart: ; 386be
 	dbw EFFECT_SPITE,            AI_Smart_Spite
 	dbw EFFECT_HEAL_BELL,        AI_Smart_HealBell
 	dbw EFFECT_PRIORITY_HIT,     AI_Smart_PriorityHit
-	dbw EFFECT_THIEF,            AI_Smart_Thief
 	dbw EFFECT_MEAN_LOOK,        AI_Smart_MeanLook
 	dbw EFFECT_NIGHTMARE,        AI_Smart_Nightmare
-	dbw EFFECT_FLAME_WHEEL,      AI_Smart_FlameWheel
 	dbw EFFECT_CURSE,            AI_Smart_Curse
 	dbw EFFECT_PROTECT,          AI_Smart_Protect
 	dbw EFFECT_FORESIGHT,        AI_Smart_Foresight
@@ -383,7 +381,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_MAGNITUDE,        AI_Smart_Magnitude
 	dbw EFFECT_BATON_PASS,       AI_Smart_BatonPass
 	dbw EFFECT_PURSUIT,          AI_Smart_Pursuit
-	dbw EFFECT_RAPID_SPIN,       AI_Smart_RapidSpin
+	dbw EFFECT_BULK_UP,          AI_Smart_BulkUp
 	dbw EFFECT_MORNING_SUN,      AI_Smart_MorningSun
 	dbw EFFECT_SYNTHESIS,        AI_Smart_Synthesis
 	dbw EFFECT_MOONLIGHT,        AI_Smart_Moonlight
@@ -393,7 +391,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_BELLY_DRUM,       AI_Smart_BellyDrum
 	dbw EFFECT_PSYCH_UP,         AI_Smart_PsychUp
 	dbw EFFECT_MIRROR_COAT,      AI_Smart_MirrorCoat
-	dbw EFFECT_SKULL_BASH,       AI_Smart_SkullBash
+	dbw EFFECT_FLARE_BLITZ,      AI_Smart_FlareBlitz
 	dbw EFFECT_TWISTER,          AI_Smart_Twister
 	dbw EFFECT_EARTHQUAKE,       AI_Smart_Earthquake
 	dbw EFFECT_FUTURE_SIGHT,     AI_Smart_FutureSight
@@ -757,47 +755,16 @@ AI_Smart_AlwaysHit: ; 38947
 ; 3895b
 
 
-AI_Smart_MirrorMove: ; 3895b
+AI_Smart_Hex:  ; 3895b
+; Greatly encourage this move if the opponent has any status effect.
 
-; If the player did not use any move last turn...
-	ld a, [wLastPlayerCounterMove]
+	ld a, [wBattleMonStatus]
 	and a
-	jr nz, .asm_38968
-
-; ...do nothing if enemy is slower than player
-	call AICompareSpeed
-	ret nc
-
-; ...or dismiss this move if enemy is faster than player.
-	jp AIDiscourageMove
-
-; If the player did use a move last turn...
-.asm_38968
-	push hl
-	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
-	pop hl
-
-; ...do nothing if he didn't use a useful move.
-	ret nc
-
-; If he did, 50% chance to encourage this move...
-	call AI_50_50
-	ret c
-
+	ret z
 	dec [hl]
-
-; ...and 90% chance to encourage this move again if the enemy is faster.
-	call AICompareSpeed
-	ret nc
-
-	call Random
-	cp 10 percent
-	ret c
-
-	dec [hl]
+	dec [hl] 
 	ret
+	
 ; 38985
 
 
@@ -1089,7 +1056,7 @@ AI_Smart_TrapTarget: ; 38a71
 ; 38a9c
 
 
-AI_Smart_RazorWind:
+AI_Smart_SkyAttack:
 AI_Smart_Unused2B: ; 38a9c
 	ld a, [wEnemySubStatus1]
 	bit SUBSTATUS_PERISH, a
@@ -1284,6 +1251,7 @@ AI_Smart_Substitute: ; 38b5c
 ; 38b63
 
 
+AI_Smart_DracoMeteor:
 AI_Smart_HyperBeam: ; 38b63
 	call AICheckEnemyHalfHP
 	jr c, .asm_38b72
@@ -1309,93 +1277,56 @@ AI_Smart_HyperBeam: ; 38b63
 ; 38b7f
 
 
-AI_Smart_Rage: ; 38b7f
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_RAGE, a
-	jr z, .asm_38b9b
-
-; If enemy's Rage is building, 50% chance to encourage this move.
-	call AI_50_50
-	jr c, .asm_38b8c
-
-	dec [hl]
-
-; Encourage this move based on Rage's counter.
-.asm_38b8c
-	ld a, [wEnemyRageCounter]
-	cp $2
-	ret c
-	dec [hl]
-	ld a, [wEnemyRageCounter]
-	cp $3
-	ret c
-	dec [hl]
-	ret
-
-.asm_38b9b
-; If enemy's Rage is not building, discourage this move if enemy's HP is below 50%.
+AI_Smart_CalmMind: ; 38b7f
+	call AICheckEnemyMaxHP
+	jr c, .cmind
+; Discourage this move if enemy's HP is lower than 50%.
 	call AICheckEnemyHalfHP
-	jr nc, .asm_38ba6
+	jr nc, .nocmind
+	
+; Discourage this move if enemy's special defense level is higher than +3.
+	ld a, [wEnemySDefLevel]
+	cp $b
+	jr nc, .nocmind
 
-; 50% chance to encourage this move otherwise.
-	call AI_80_20
+; 80% chance to greatly encourage this move if
+; enemy's Special Defense level is lower than +1.
+	cp $9
 	ret nc
+	call AI_80_20
+	ret c
+	dec [hl]
 	dec [hl]
 	ret
 
-.asm_38ba6
+.cmind
+; 80% chance to greatly encourage this move if
+; enemy's Special Defense level is lower than +3.
+	cp $a
+	ret nc
+	call AI_80_20
+	ret c
+	dec [hl]
+	dec [hl]
+	ret	
+
+.nocmind
 	inc [hl]
 	ret
+	
 ; 38ba8
 
 
-AI_Smart_Mimic: ; 38ba8
-	ld a, [wLastPlayerCounterMove]
-	and a
-	jr z, .asm_38be9
-
-	call AICheckEnemyHalfHP
-	jr nc, .asm_38bef
-
-	push hl
-	ld a, [wLastPlayerCounterMove]
-	call AIGetEnemyMove
-
-	ld a, $1
-	ld [hBattleTurn], a
-	callfar BattleCheckTypeMatchup
-
-	ld a, [wd265]
-	cp $a
-	pop hl
-	jr c, .asm_38bef
-	jr z, .asm_38bd4
-
-	call AI_50_50
-	jr c, .asm_38bd4
-
-	dec [hl]
-
-.asm_38bd4
-	ld a, [wLastPlayerCounterMove]
-	push hl
-	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
-
-	pop hl
+AI_Smart_ChargeBeam: ; 38ba8
+; 80% chance to greatly encourage this move if
+; enemy's Special Attack level is lower than +1.
+	ld a, [wEnemySAtkLevel]
+	cp $9
 	ret nc
-	call AI_50_50
+	call AI_80_20
 	ret c
 	dec [hl]
-	ret
-
-.asm_38be9
-	call AICompareSpeed
-	jp c, AIDiscourageMove
-
-.asm_38bef
-	inc [hl]
+	dec [hl]
 	ret
 ; 38bf1
 
@@ -1529,26 +1460,16 @@ AI_Smart_Encore: ; 38c3b
 	db GROWTH
 	db POISONPOWDER
 	db STRING_SHOT
-	db MEDITATE
 	db AGILITY
 	db TELEPORT
 	db SCREECH
 	db HAZE
 	db FOCUS_ENERGY
 	db DREAM_EATER
-	db POISON_GAS
-	db SPLASH
-	db SHARPEN
-	db CONVERSION
 	db SUPER_FANG
 	db SUBSTITUTE
-	db TRIPLE_KICK
-	db SPIDER_WEB
 	db MIND_READER
-	db FLAME_WHEEL
 	db AEROBLAST
-	db COTTON_SPORE
-	db POWDER_SNOW
 	db -1 ; end
 ; 38ca4
 
@@ -1676,8 +1597,7 @@ Function_0x38d16; 38d16
 
 
 AI_Smart_DestinyBond:
-AI_Smart_Reversal:
-AI_Smart_SkullBash: ; 38d19
+AI_Smart_Reversal: ; 38d19
 ; Discourage this move if enemy's HP is above 25%.
 
 	call AICheckEnemyQuarterHP
@@ -1777,57 +1697,6 @@ AI_Smart_PriorityHit: ; 38d5a
 	dec [hl]
 	ret
 ; 38d93
-
-
-AI_Smart_Thief: ; 38d93
-; Don't use Thief unless it's the only move available.
-
-	ld a, [hl]
-	add $1e
-	ld [hl], a
-	ret
-; 38d98
-
-
-AI_Smart_Conversion2: ; 38d98
-	ld a, [wLastPlayerMove]
-	and a
-	jr nz, .asm_38dc9
-
-	push hl
-	dec a
-	ld hl, Moves + MOVE_TYPE
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-
-	ld a, BANK(Moves)
-	call GetFarByte
-	ld [wPlayerMoveStruct + MOVE_TYPE], a
-
-	xor a
-	ld [hBattleTurn], a
-
-	callfar BattleCheckTypeMatchup
-
-	ld a, [wd265]
-	cp $a
-	pop hl
-	jr c, .asm_38dc9
-	ret z
-
-	call AI_50_50
-	ret c
-
-	dec [hl]
-	ret
-
-.asm_38dc9
-	call Random
-	cp 10 percent
-	ret c
-	inc [hl]
-	ret
-; 38dd1
 
 
 AI_Smart_Disable: ; 38dd1
@@ -1945,7 +1814,8 @@ AI_Smart_Nightmare: ; 38e4a
 ; 38e50
 
 
-AI_Smart_FlameWheel: ; 38e50
+
+AI_Smart_FlareBlitz: ; 38e50
 ; Use this move if the enemy is frozen.
 
 	ld a, [wEnemyMonStatus]
@@ -2430,28 +2300,41 @@ AI_Smart_Pursuit: ; 39072
 ; 39084
 
 
-AI_Smart_RapidSpin: ; 39084
-; 80% chance to greatly encourage this move if the enemy is
-; trapped (Bind effect), seeded, or scattered with spikes.
+AI_Smart_BulkUp: ; 39084
+	call AICheckEnemyMaxHP
+	jr c, .bulkup
+; Discourage this move if enemy's HP is lower than 50%.
+	call AICheckEnemyHalfHP
+	jr nc, .nobulkup
+	
+; Discourage this move if enemy's Defense level is higher than +3.
+	ld a, [wEnemyDefLevel]
+	cp $b
+	jr nc, .nobulkup
 
-	ld a, [wEnemyWrapCount]
-	and a
-	jr nz, .asm_39097
-
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_LEECH_SEED, a
-	jr nz, .asm_39097
-
-	ld a, [wEnemyScreens]
-	bit SCREENS_SPIKES, a
-	ret z
-
-.asm_39097
+; 80% chance to greatly encourage this move if
+; enemy's Defense level is lower than +1.
+	cp $9
+	ret nc
 	call AI_80_20
 	ret c
+	dec [hl]
+	dec [hl]
+	ret
 
+.bulkup
+; 80% chance to greatly encourage this move if
+; enemy's Special Defense level is lower than +3.
+	cp $a
+	ret nc
+	call AI_80_20
+	ret c
 	dec [hl]
 	dec [hl]
+	ret	
+
+.nobulkup
+	inc [hl]
 	ret
 ; 3909e
 
@@ -2518,16 +2401,13 @@ AI_Smart_RainDance: ; 390cb
 ; 390e7
 
 RainDanceMoves: ; 390e7
-	db WATER_GUN
+	db AQUA_JET
 	db HYDRO_PUMP
 	db SURF
 	db BUBBLEBEAM
 	db THUNDER
 	db WATERFALL
-	db CLAMP
 	db BUBBLE
-	db CRABHAMMER
-	db OCTAZOOKA
 	db WHIRLPOOL
 	db -1 ; end
 ; 390f3
@@ -3183,28 +3063,18 @@ AI_Opportunist: ; 39315
 	db LEECH_SEED
 	db GROWTH
 	db STRING_SHOT
-	db MEDITATE
 	db AGILITY
-	db RAGE
-	db MIMIC
 	db SCREECH
 	db HARDEN
-	db WITHDRAW
 	db DEFENSE_CURL
-	db BARRIER
 	db LIGHT_SCREEN
 	db HAZE
 	db REFLECT
 	db FOCUS_ENERGY
-	db BIDE
 	db AMNESIA
 	db TRANSFORM
-	db SPLASH
 	db ACID_ARMOR
-	db SHARPEN
-	db CONVERSION
 	db SUBSTITUTE
-	db FLAME_WHEEL
 	db -1 ; end
 ; 39369
 
@@ -3345,7 +3215,6 @@ AIDamageCalc: ; 393e7
 	db EFFECT_SUPER_FANG
 	db EFFECT_STATIC_DAMAGE
 	db EFFECT_LEVEL_DAMAGE
-	db EFFECT_PSYWAVE
 	db -1 ; end
 ; 39418
 
@@ -3396,10 +3265,7 @@ AI_Cautious: ; 39418
 	db STUN_SPORE
 	db THUNDER_WAVE
 	db FOCUS_ENERGY
-	db BIDE
-	db POISON_GAS
 	db TRANSFORM
-	db CONVERSION
 	db SUBSTITUTE
 	db SPIKES
 	db -1 ; end

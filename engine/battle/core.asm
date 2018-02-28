@@ -663,14 +663,11 @@ ParsePlayerAction: ; 3c434
 
 .continue_fury_cutter
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RAGE
-	jr z, .continue_rage
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	xor a
 	ld [wPlayerRageCounter], a
 
-.continue_rage
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
 	cp EFFECT_PROTECT
 	jr z, .continue_protect
@@ -844,9 +841,9 @@ GetMovePriority: ; 3c5c5
 	ld b, a
 
 	; Vital Throw goes last.
-	cp VITAL_THROW
+	;cp VITAL_THROW
 	ld a, 0
-	ret z
+	;ret z
 
 	call GetMoveEffect
 	ld hl, MoveEffectPriorities
@@ -1282,7 +1279,7 @@ HandleWrap: ; 3c874
 	call SwitchTurnCore
 
 .skip_anim
-	call GetSixteenthMaxHP
+	call GetEighthMaxHP
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text
@@ -4238,6 +4235,13 @@ SpikesDamage: ; 3dc23
 	ld a, [de]
 	cp FLYING
 	ret z
+	
+	cp GROUND
+	jr z, .clearspikes
+	dec de
+	ld a, [de]
+	cp GROUND
+	jr z, .clearspikes
 
 	push bc
 
@@ -4252,6 +4256,11 @@ SpikesDamage: ; 3dc23
 
 	jp WaitBGMap
 
+.clearspikes
+	res SCREENS_SPIKES, [hl]
+	ld hl, BlewSpikesText
+	jp StdBattleTextBox
+	
 .hl
 	jp hl
 ; 3dc5b
@@ -6074,14 +6083,11 @@ ParseEnemyAction: ; 3e7c1
 
 .fury_cutter
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RAGE
-	jr z, .no_rage
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	xor a
 	ld [wEnemyRageCounter], a
 
-.no_rage
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_PROTECT
 	ret z
@@ -9444,3 +9450,33 @@ BattleStartMessage: ; 3fc8b
 
 	ret
 ; 3fd26
+
+SwitchHitBattleMonEntrance:
+	ld c, 50
+	call DelayFrames
+	
+	call SetEnemyTurn
+	call PursuitSwitch
+	jr c, .okpursuit
+	
+.okpursuit
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
+
+	ld a, [wCurPartyMon]
+	ld [wCurBattleMon], a
+	call AddBattleParticipant
+	call InitBattleMon
+	
+	call ResetPlayerStatLevels
+	call SendOutPkmnText
+	call NewBattleMonStatus
+	call BreakAttraction
+	
+	call SendOutPlayerMon
+	call EmptyBattleTextBox
+	call LoadTileMapToTempTileMap
+	call SetPlayerTurn
+	jp SpikesDamage
+

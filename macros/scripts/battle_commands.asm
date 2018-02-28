@@ -22,7 +22,7 @@ ENDM
 	command criticaltext            ; 0f
 	command supereffectivetext      ; 10
 	command checkdestinybond        ; 11
-	command buildopponentrage       ; 12
+	command knockoffdamage          ; 12  Unused !!!!!!!!!!!!
 	command poisontarget            ; 13
 	command sleeptarget             ; 14
 	command draintarget             ; 15
@@ -31,14 +31,14 @@ ENDM
 	command freezetarget            ; 18
 	command paralyzetarget          ; 19
 	command selfdestruct            ; 1a
-	command mirrormove              ; 1b
+	command hex                     ; 1b
 	command statup                  ; 1c
 	command statdown                ; 1d
-	command payday                  ; 1e
-	command conversion              ; 1f
+	command switchhit               ; 1e
+	command burn                    ; 1f
 	command resetstats              ; 20
-	command storeenergy             ; 21
-	command unleashenergy           ; 22
+	command storeenergy             ; 21 Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
+	command unleashenergy           ; 22 Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
 	command forceswitch             ; 23
 	command endloop                 ; 24
 	command flinchtarget            ; 25
@@ -55,10 +55,10 @@ ENDM
 	command paralyze                ; 30
 	command substitute              ; 31
 	command rechargenextturn        ; 32
-	command mimic                   ; 33
+	command mimic                   ; 33 Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
 	command metronome               ; 34
 	command leechseed               ; 35
-	command splash                  ; 36
+	command venoshock               ; 36
 	command disable                 ; 37
 	command cleartext               ; 38
 	command charge                  ; 39
@@ -72,7 +72,7 @@ ENDM
 	command encore                  ; 41
 	command painsplit               ; 42
 	command snore                   ; 43
-	command conversion2             ; 44
+	command dracometeor             ; 44
 	command lockon                  ; 45
 	command sketch                  ; 46
 	command defrostopponent         ; 47
@@ -82,7 +82,7 @@ ENDM
 	command falseswipe              ; 4b
 	command healbell                ; 4c
 	command kingsrock               ; 4d
-	command triplekick              ; 4e
+	command closecombat             ; 4e
 	command kickcounter             ; 4f
 	command thief                   ; 50
 	command arenatrap               ; 51
@@ -101,7 +101,7 @@ ENDM
 	command furycutter              ; 5e
 	command attract                 ; 5f
 	command happinesspower          ; 60
-	command present                 ; 61
+	command payback                 ; 61
 	command damagecalc              ; 62
 	command frustrationpower        ; 63
 	command safeguard               ; 64
@@ -109,7 +109,7 @@ ENDM
 	command getmagnitude            ; 66
 	command batonpass               ; 67
 	command pursuit                 ; 68
-	command clearhazards            ; 69
+	command bulkup                  ; 69
 	command healmorn                ; 6a
 	command healday                 ; 6b
 	command healnite                ; 6c
@@ -155,7 +155,7 @@ ENDM
 	command fakeout                 ; 94
 	command bellydrum               ; 95
 	command psychup                 ; 96
-	command rage                    ; 97
+	command calmmind                ; 97
 	command doubleflyingdamage      ; 98
 	command doubleundergrounddamage ; 99
 	command mirrorcoat              ; 9a
@@ -165,14 +165,14 @@ ENDM
 	command skipsuncharge           ; 9e
 	command thunderaccuracy         ; 9f
 	command teleport                ; a0
-	command beatup                  ; a1
-	command ragedamage              ; a2
+	command dragondance             ; a1
+	command ragedamage              ; a2 Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
 	command resettypematchup        ; a3
 	command allstatsup              ; a4
-	command effect0xa5              ; a5
+	command effect0xa5              ; a5 Bide Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
 	command raisesubnoanim          ; a6
 	command lowersubnoanim          ; a7
-	command effect0xa8              ; a8
+	command quiverdance             ; a8
 	command clearmissdamage         ; a9
 	command movedelay               ; aa
 	command hittarget               ; ab

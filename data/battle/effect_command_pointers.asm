@@ -21,7 +21,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_CriticalText ; 35175
 	dw BattleCommand_SuperEffectiveText ; 351ad
 	dw BattleCommand_CheckDestinyBond ; 351c0
-	dw BattleCommand_BuildOpponentRage ; 35250
+	dw BattleCommand_KnockOffDamage ; 35250	Unused!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	dw BattleCommand_PoisonTarget ; 35eee
 	dw BattleCommand_SleepTarget ; 35e5c
 	dw BattleCommand_DrainTarget ; 35fff
@@ -30,14 +30,14 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_FreezeTarget ; 36102
 	dw BattleCommand_ParalyzeTarget ; 36165
 	dw BattleCommand_Selfdestruct ; 37380
-	dw BattleCommand_MirrorMove ; 373c9
+	dw BattleCommand_Hex ; 373c9
 	dw BattleCommand_StatUp ; 361e4
 	dw BattleCommand_StatDown ; 362e3
-	dw BattleCommand_PayDay ; 3705c
-	dw BattleCommand_Conversion ; 3707f
+	dw BattleCommand_SwitchHit ; 3705c
+	dw BattleCommand_Burn ; 3707f
 	dw BattleCommand_ResetStats ; 3710e
-	dw BattleCommand_StoreEnergy ; 36671
-	dw BattleCommand_UnleashEnergy ; 366e5
+	dw BattleCommand_StoreEnergy ; 36671 Unused!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	dw BattleCommand_UnleashEnergy ; 366e5 Unused!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	dw BattleCommand_ForceSwitch ; 3680f
 	dw BattleCommand_EndLoop ; 369b6
 	dw BattleCommand_FlinchTarget ; 36aa0
@@ -54,10 +54,10 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Paralyze ; 36dc7
 	dw BattleCommand_Substitute ; 36e7c
 	dw BattleCommand_RechargeNextTurn ; 36f0b
-	dw BattleCommand_Mimic ; 36f46
+	dw BattleCommand_Mimic ; 36f46 Unused !!!!!!!!!!!!!!!!!!!!!!!!!1
 	dw BattleCommand_Metronome ; 37418
 	dw BattleCommand_LeechSeed ; 36f9d
-	dw BattleCommand_Splash ; 36fe1
+	dw BattleCommand_Venoshock ; 36fe1
 	dw BattleCommand_Disable ; 36fed
 	dw BattleCommand_ClearText ; 37e85
 	dw BattleCommand_Charge ; 36b4d
@@ -71,7 +71,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Encore ; 35864
 	dw BattleCommand_PainSplit ; 35926
 	dw BattleCommand_Snore ; 359d0
-	dw BattleCommand_Conversion2 ; 359e6
+	dw BattleCommand_DracoMeteor ; 359e6
 	dw BattleCommand_LockOn ; 35a53
 	dw BattleCommand_Sketch ; 35a74
 	dw BattleCommand_DefrostOpponent ; 35b16
@@ -81,7 +81,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_FalseSwipe ; 35c94
 	dw BattleCommand_HealBell ; 35cc9
 	dw BattleCommand_HeldFlinch ; 36ac9
-	dw BattleCommand_TripleKick ; 346b2
+	dw BattleCommand_CloseCombat ; 346b2
 	dw BattleCommand_KickCounter ; 346cd
 	dw BattleCommand_Thief ; 37492
 	dw BattleCommand_ArenaTrap ; 37517
@@ -100,7 +100,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_FuryCutter ; 37792
 	dw BattleCommand_Attract ; 377ce
 	dw BattleCommand_HappinessPower ; 3784b
-	dw BattleCommand_Present ; 37874
+	dw BattleCommand_Payback ; 37874
 	dw BattleCommand_DamageCalc ; 35612 - 62
 	dw BattleCommand_FrustrationPower ; 3790e
 	dw BattleCommand_Safeguard ; 37939
@@ -108,7 +108,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_GetMagnitude ; 37991
 	dw BattleCommand_BatonPass ; 379c9
 	dw BattleCommand_Pursuit ; 37b1d
-	dw BattleCommand_ClearHazards ; 37b39
+	dw BattleCommand_BulkUp ; 37b39
 	dw BattleCommand_HealMorn ; 37b74
 	dw BattleCommand_HealDay ; 37b78
 	dw BattleCommand_HealNite ; 37b7c
@@ -154,7 +154,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_FakeOut ; 36a82
 	dw BattleCommand_BellyDrum ; 37c1a
 	dw BattleCommand_PsychUp ; 37c55
-	dw BattleCommand_Rage ; 36f1d
+	dw BattleCommand_CalmMind ; 36f1d
 	dw BattleCommand_DoubleFlyingDamage ; 36f25
 	dw BattleCommand_DoubleUndergroundDamage ; 36f2f
 	dw BattleCommand_MirrorCoat ; 37c95
@@ -164,14 +164,14 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_SkipSunCharge ; 37d02
 	dw BattleCommand_ThunderAccuracy ; 37d94
 	dw BattleCommand_Teleport ; 36778
-	dw BattleCommand_BeatUp ; 35461
-	dw BattleCommand_RageDamage ; 3527b
+	dw BattleCommand_DragonDance ; 35461
+	dw BattleCommand_RageDamage ; 3527b Unused!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 	dw BattleCommand_ResetTypeMatchup ; 34833
 	dw BattleCommand_AllStatsUp ; 36500
 	dw BattleCommanda5 ; 35165
 	dw BattleCommand_RaiseSubNoAnim ; 365af
 	dw BattleCommand_LowerSubNoAnim ; 365c3
-	dw BattleCommanda8 ; 355b5
+	dw BattleCommand_QuiverDance ; 355b5
 	dw BattleCommand_ClearMissDamage ; 355d5 - a9
 	dw BattleCommand_MoveDelay ; 37e80
 	dw BattleCommand_HitTarget ; 34f57

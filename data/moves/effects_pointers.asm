@@ -9,7 +9,7 @@ MoveEffectsPointers: ; 271f4
 	dw ParalyzeHit
 	dw Selfdestruct
 	dw DreamEater
-	dw MirrorMove
+	dw Hex
 	dw AttackUp
 	dw DefenseUp
 	dw SpeedUp
@@ -26,20 +26,20 @@ MoveEffectsPointers: ; 271f4
 	dw AccuracyDown
 	dw EvasionDown
 	dw ResetStats
-	dw Bide
+	dw Bide					;Unused!!!!!!!!!!!!!!!!!
 	dw Rampage
 	dw ForceSwitch
 	dw MultiHit
-	dw Conversion
+	dw DoBurn
 	dw FlinchHit
 	dw Heal
 	dw Toxic
-	dw PayDay
+	dw SwitchHit
 	dw LightScreen
 	dw TriAttack
 	dw NormalHit
 	dw OHKOHit
-	dw RazorWind
+	dw IceFang
 	dw SuperFang
 	dw StaticDamage
 	dw TrapTarget
@@ -77,23 +77,23 @@ MoveEffectsPointers: ; 271f4
 	dw EvasionDownHit
 	dw SkyAttack
 	dw ConfuseHit
-	dw PoisonMultiHit
+	dw PoisonMultiHit	; Unused !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 	dw NormalHit
 	dw Substitute
 	dw HyperBeam
-	dw Rage
-	dw Mimic
+	dw CalmMind
+	dw SpecialAttackUpHit
 	dw Metronome
 	dw LeechSeed
-	dw Splash
+	dw Venoshock
 	dw Disable
 	dw StaticDamage
-	dw Psywave
+	dw ThunderFang
 	dw Counter
 	dw Encore
 	dw PainSplit
 	dw Snore
-	dw Conversion2
+	dw DracoMeteor
 	dw LockOn
 	dw Sketch
 	dw DefrostOpponent
@@ -104,11 +104,11 @@ MoveEffectsPointers: ; 271f4
 	dw FalseSwipe
 	dw HealBell
 	dw NormalHit
-	dw TripleKick
+	dw CloseCombat
 	dw Thief
 	dw MeanLook
 	dw Nightmare
-	dw FlameWheel
+	dw FireFang
 	dw Curse
 	dw NormalHit
 	dw Protect
@@ -122,14 +122,14 @@ MoveEffectsPointers: ; 271f4
 	dw FuryCutter
 	dw Attract
 	dw Return
-	dw Present
+	dw Payback
 	dw Frustration
 	dw Safeguard
 	dw SacredFire
 	dw Magnitude
 	dw BatonPass
 	dw Pursuit
-	dw RapidSpin
+	dw BulkUp
 	dw NormalHit
 	dw NormalHit
 	dw MorningSun
@@ -145,7 +145,7 @@ MoveEffectsPointers: ; 271f4
 	dw BellyDrum
 	dw PsychUp
 	dw MirrorCoat
-	dw SkullBash
+	dw FlareBlitz
 	dw Twister
 	dw Earthquake
 	dw FutureSight
@@ -154,6 +154,8 @@ MoveEffectsPointers: ; 271f4
 	dw Solarbeam
 	dw Thunder
 	dw Teleport
-	dw BeatUp
+	dw DragonDance
 	dw Fly
 	dw DefenseCurl
+	dw QuiverDance
+
